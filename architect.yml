@@ -1,0 +1,44 @@
+name: tjcbackend
+description: This is Backend for TJC
+keywords:
+  - additional
+  - search
+  - keywords
+secrets:
+  db_user:
+    required: true
+    description: Human-readable description of my secret
+    default: prisma
+  db_pass: topsecret
+  db_name: blog
+services:
+  database:
+    image: postgres:11
+    interfaces:
+      pg:
+        port: 5432
+        protocol: postgres
+    environment:
+      POSTGRES_USER: ${{ secrets.db_user }}
+      POSTGRES_PASSWORD: ${{ secrets.db_pass }}
+      POSTGRES_DATABASE: ${{ secrets.db_name }}
+  graphql-api:
+    description: Graphql API Service
+    depends_on:
+      - database
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: npm start
+    entrypoint: entrypoint override for dockerfile ENTRYPOINT
+    interfaces:
+      public:
+        port: 8080
+        protocol: http
+      admin: 8081
+    liveness_probe:
+      command: curl --fail localhost:8080/
+    environment:
+      DB_ADDR: ${{ services.database.interfaces.pg.url }}/${{ secrets.db_name }}
+      DB_USER: ${{ secrets.db_user }}
+      DB_PASS: ${{ secrets.db_pass }}

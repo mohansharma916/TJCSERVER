@@ -16,9 +16,9 @@ input ChangePasswordInput {
   oldPassword: String!
 }
 
-input CreatePostInput {
-  content: String!
-  title: String!
+input CreateSubscriptionEmailInput {
+  """Example field (placeholder)"""
+  email: String!
 }
 
 """
@@ -38,64 +38,20 @@ input LoginInput {
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
-  createPost(data: CreatePostInput!): Post!
+  createSubscriptionEmail(createSubscriptionEmailInput: CreateSubscriptionEmailInput!): SubscriptionEmail!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
+  removeSubscriptionEmail(id: Int!): SubscriptionEmail!
   signup(data: SignupInput!): Auth!
+  updateSubscriptionEmail(updateSubscriptionEmailInput: UpdateSubscriptionEmailInput!): SubscriptionEmail!
   updateUser(data: UpdateUserInput!): User!
-}
-
-"""
-Possible directions in which to order a list of items when provided an `orderBy` argument.
-"""
-enum OrderDirection {
-  asc
-  desc
-}
-
-type PageInfo {
-  endCursor: String
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
-}
-
-type Post {
-  author: User
-  content: String
-
-  """Identifies the date and time when the object was created."""
-  createdAt: DateTime!
-  id: ID!
-  published: Boolean!
-  title: String!
-
-  """Identifies the date and time when the object was last updated."""
-  updatedAt: DateTime!
-}
-
-type PostConnection {
-  edges: [PostEdge!]
-  pageInfo: PageInfo!
-  totalCount: Int!
-}
-
-type PostEdge {
-  cursor: String!
-  node: Post!
-}
-
-input PostOrder {
-  direction: OrderDirection!
 }
 
 type Query {
   hello(name: String!): String!
   helloWorld: String!
   me: User!
-  post: Post!
-  publishedPosts(orderBy: PostOrder, query: String): PostConnection!
-  userPosts: [Post!]!
+  subscriptionEmail(id: Int!): SubscriptionEmail!
 }
 
 """User role"""
@@ -106,13 +62,12 @@ enum Role {
 
 input SignupInput {
   email: String!
-  firstname: String
-  lastname: String
   password: String!
 }
 
-type Subscription {
-  postCreated: Post!
+type SubscriptionEmail {
+  """Example field (placeholder)"""
+  email: String!
 }
 
 type Token {
@@ -121,6 +76,12 @@ type Token {
 
   """JWT refresh token"""
   refreshToken: JWT!
+}
+
+input UpdateSubscriptionEmailInput {
+  """Example field (placeholder)"""
+  email: String
+  id: Int!
 }
 
 input UpdateUserInput {
@@ -135,7 +96,6 @@ type User {
   firstname: String
   id: ID!
   lastname: String
-  posts: [Post!]
   role: Role!
 
   """Identifies the date and time when the object was last updated."""

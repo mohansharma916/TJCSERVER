@@ -7,10 +7,10 @@ import { AppService } from './app.service';
 import { AppResolver } from './app.resolver';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { PostsModule } from './posts/posts.module';
 import config from './common/configs/config';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GqlConfigService } from './gql-config.service';
+import { SubscriptionEmailModule } from './subscription-email/subscription-email.module';
 
 @Module({
   imports: [
@@ -35,7 +35,7 @@ import { GqlConfigService } from './gql-config.service';
 
     AuthModule,
     UsersModule,
-    PostsModule,
+    SubscriptionEmailModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
