@@ -8,6 +8,13 @@ export class SignupInput {
   email: string;
 
   @Field()
+  @IsEmail()
+  mobileNumber: string;
+
+  @Field()
+  firstname: string;
+
+  @Field()
   @IsNotEmpty()
   @MinLength(8)
   password: string;
