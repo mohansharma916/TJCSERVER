@@ -13,26 +13,26 @@ generator dbml {
 }
 
 model User {
-  id           String   @id @default(cuid())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  email        String   @unique
-  mobileNumber String?
-  password     String
-  firstname    String?
-  lastname     String?
-  role         Role
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  email           String   @unique
+  mobileNumber    String?
+  password        String
+  name            String?
+  paymentReceived Boolean  @default(false)
+  role            Role     @default(USER)
 }
 
-model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean
-  title     String
-  content   String?
-  authorId  String?
-}
+// model Post {
+//   id        String   @id @default(cuid())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   published Boolean
+//   title     String
+//   content   String?
+//   authorId  String?
+// }
 
 model EmailSubscription {
   id        String   @id @default(cuid())

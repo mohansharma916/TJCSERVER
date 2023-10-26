@@ -62,6 +62,8 @@ enum Role {
 
 input SignupInput {
   email: String!
+  mobileNumber: String!
+  name: String!
   password: String!
 }
 
@@ -93,9 +95,9 @@ type User {
   """Identifies the date and time when the object was created."""
   createdAt: DateTime!
   email: String!
-  firstname: String
   id: ID!
-  lastname: String
+  mobileNumber: String
+  name: String
   role: Role!
 
   """Identifies the date and time when the object was last updated."""

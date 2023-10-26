@@ -8,11 +8,10 @@ export class SignupInput {
   email: string;
 
   @Field()
-  @IsEmail()
   mobileNumber: string;
 
   @Field()
-  firstname: string;
+  name: string;
 
   @Field()
   @IsNotEmpty()
