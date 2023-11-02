@@ -10,8 +10,47 @@ Table User {
   mobileNumber String
   password String [not null]
   name String
-  paymentReceived Boolean [not null, default: false]
+  bookings Booking [not null]
+  paymentReceived Boolean [default: false]
   role Role [not null, default: 'USER']
+  Documents Documents [not null]
+}
+
+Table Trip {
+  id Int [pk, increment]
+  TripId String
+  TripTittle String
+  TripDuration String
+  TripPhoto String
+  TripMainImage String
+  TripTags String[] [not null]
+  TripPickAndDrop String
+  TripDescription Json[] [not null]
+  Itineary Json[] [not null]
+  Dates Json[] [not null]
+  Inclusion Json[] [not null]
+  Exclusion Json[] [not null]
+  tripDates Json[] [not null]
+  bookings Booking [not null]
+}
+
+Table Booking {
+  id Int [pk, increment]
+  user User
+  userId String
+  trip Trip [not null]
+  tripId Int [not null]
+  createdAt DateTime [default: `now()`, not null]
+  passengers Int [not null]
+}
+
+Table Documents {
+  id Int [pk, increment]
+  user User
+  userId String
+  documentTitle String
+  documentUrl String
+  status String [default: 'PENDING']
 }
 
 Table EmailSubscription {
@@ -25,3 +64,15 @@ Enum Role {
   ADMIN
   USER
 }
+
+Enum STATUS {
+  APPROVED
+  PENDING
+  REJECTED
+}
+
+Ref: Booking.userId > User.id
+
+Ref: Booking.tripId > Trip.id
+
+Ref: Documents.userId > User.id

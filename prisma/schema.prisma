@@ -13,26 +13,55 @@ generator dbml {
 }
 
 model User {
-  id              String   @id @default(cuid())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  email           String   @unique
+  id              String      @id @default(cuid())
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  email           String      @unique
   mobileNumber    String?
   password        String
   name            String?
-  paymentReceived Boolean  @default(false)
-  role            Role     @default(USER)
+  bookings        Booking[] // A user can make multiple bookings
+  paymentReceived Boolean?    @default(false)
+  role            Role        @default(USER)
+  Documents       Documents[]
 }
 
-// model Post {
-//   id        String   @id @default(cuid())
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   published Boolean
-//   title     String
-//   content   String?
-//   authorId  String?
-// }
+model Trip {
+  id              Int       @id @default(autoincrement())
+  TripId          String?
+  TripTittle      String?
+  TripDuration    String?
+  TripPhoto       String?
+  TripMainImage   String?
+  TripTags        String[]
+  TripPickAndDrop String?
+  TripDescription Json[]    @default([])
+  Itineary        Json[]    @default([])
+  Dates           Json[]    @default([])
+  Inclusion       Json[]    @default([])
+  Exclusion       Json[]    @default([])
+  bookings        Booking[] // A trip can have multiple bookings
+}
+
+// Define the Booking model
+model Booking {
+  id         Int      @id @default(autoincrement())
+  user       User?    @relation(fields: [userId], references: [id])
+  userId     String?
+  trip       Trip     @relation(fields: [tripId], references: [id])
+  tripId     Int
+  createdAt  DateTime @default(now())
+  passengers Int
+}
+
+model Documents {
+  id            Int     @id @default(autoincrement())
+  user          User?   @relation(fields: [userId], references: [id])
+  userId        String?
+  documentTitle String?
+  documentUrl   String?
+  status        String? @default("PENDING")
+}
 
 model EmailSubscription {
   id        String   @id @default(cuid())
@@ -44,4 +73,10 @@ model EmailSubscription {
 enum Role {
   ADMIN
   USER
+}
+
+enum STATUS {
+  APPROVED
+  PENDING
+  REJECTED
 }
