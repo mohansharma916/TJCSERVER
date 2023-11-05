@@ -71,6 +71,16 @@ model EmailSubscription {
   email     String
 }
 
+model RequestDestination {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  name         String?
+  emailId      String?
+  mobileNumber String?
+  destination  String?
+}
+
 enum Role {
   ADMIN
   USER

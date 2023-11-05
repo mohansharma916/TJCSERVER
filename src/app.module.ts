@@ -11,6 +11,7 @@ import config from './common/configs/config';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GqlConfigService } from './gql-config.service';
 import { SubscriptionEmailModule } from './subscription-email/subscription-email.module';
+import { RequestDestinationModule } from './request-destination/request-destination.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { SubscriptionEmailModule } from './subscription-email/subscription-email
     AuthModule,
     UsersModule,
     SubscriptionEmailModule,
+    RequestDestinationModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
