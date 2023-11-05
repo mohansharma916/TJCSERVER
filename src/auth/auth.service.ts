@@ -23,7 +23,7 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
-  async createUser(payload: SignupInput): Promise<Token> {
+  async createUser(payload: SignupInput) {
     const hashedPassword = await this.passwordService.hashPassword(
       payload.password,
     );
@@ -37,9 +37,10 @@ export class AuthService {
         },
       });
 
-      return this.generateTokens({
-        userId: user.id,
-      });
+      return 'Accounr Has Been Created ';
+      //  this.generateTokens({
+      //   userId: user.id,
+      // });
     } catch (e) {
       if (
         e instanceof Prisma.PrismaClientKnownRequestError &&

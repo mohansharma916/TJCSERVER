@@ -7,7 +7,7 @@ import { PrismaService } from 'nestjs-prisma';
 export class RequestDestinationService {
   constructor(private readonly prisma: PrismaService) {}
   create(createRequestDestinationInput: CreateRequestDestinationInput) {
-    return this.prisma.requestDestination.create({
+    return this.prisma.queryDestination.create({
       data: {
         emailId: createRequestDestinationInput.email,
         name: createRequestDestinationInput.name,

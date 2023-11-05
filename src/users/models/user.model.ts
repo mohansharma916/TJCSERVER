@@ -23,6 +23,9 @@ export class User extends BaseModel {
   @Field(() => String, { nullable: true })
   name?: string;
 
+  @Field(() => Boolean, { nullable: true })
+  active?: boolean;
+
   @Field(() => String, { nullable: true })
   mobileNumber?: string;
 
