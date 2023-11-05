@@ -36,11 +36,9 @@ export class AuthService {
           role: 'USER',
         },
       });
-
-      return user;
-      //  this.generateTokens({
-      //   userId: user.id,
-      // });
+      return this.generateTokens({
+        userId: user.id,
+      });
     } catch (e) {
       if (
         e instanceof Prisma.PrismaClientKnownRequestError &&
