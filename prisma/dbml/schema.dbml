@@ -9,6 +9,7 @@ Table User {
   email String [unique, not null]
   mobileNumber String
   password String [not null]
+  active Boolean [not null, default: false]
   name String
   bookings Booking [not null]
   paymentReceived Boolean [default: false]
@@ -30,7 +31,6 @@ Table Trip {
   Dates Json[] [not null]
   Inclusion Json[] [not null]
   Exclusion Json[] [not null]
-  tripDates Json[] [not null]
   bookings Booking [not null]
 }
 
