@@ -37,7 +37,7 @@ export class AuthService {
         },
       });
 
-      return 'Accounr Has Been Created ';
+      return user;
       //  this.generateTokens({
       //   userId: user.id,
       // });
