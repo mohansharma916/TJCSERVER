@@ -16,6 +16,20 @@ input ChangePasswordInput {
   oldPassword: String!
 }
 
+input CreateRequestDestinationInput {
+  """destination"""
+  destination: String!
+
+  """Email"""
+  email: String!
+
+  """mobileNumber"""
+  mobileNumber: String!
+
+  """Name"""
+  name: String!
+}
+
 input CreateSubscriptionEmailInput {
   """Example field (placeholder)"""
   email: String!
@@ -38,11 +52,14 @@ input LoginInput {
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
+  createRequestDestination(createRequestDestinationInput: CreateRequestDestinationInput!): RequestDestination!
   createSubscriptionEmail(createSubscriptionEmailInput: CreateSubscriptionEmailInput!): SubscriptionEmail!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
+  removeRequestDestination(id: Int!): RequestDestination!
   removeSubscriptionEmail(id: Int!): SubscriptionEmail!
   signup(data: SignupInput!): Auth!
+  updateRequestDestination(updateRequestDestinationInput: UpdateRequestDestinationInput!): RequestDestination!
   updateSubscriptionEmail(updateSubscriptionEmailInput: UpdateSubscriptionEmailInput!): SubscriptionEmail!
   updateUser(data: UpdateUserInput!): User!
 }
@@ -51,7 +68,22 @@ type Query {
   hello(name: String!): String!
   helloWorld: String!
   me: User!
+  requestDestination(id: Int!): RequestDestination!
   subscriptionEmail(id: Int!): SubscriptionEmail!
+}
+
+type RequestDestination {
+  """destination"""
+  destination: String!
+
+  """Email"""
+  email: String!
+
+  """mobileNumber"""
+  mobileNumber: String!
+
+  """Name"""
+  name: String!
 }
 
 """User role"""
@@ -80,6 +112,21 @@ type Token {
   refreshToken: JWT!
 }
 
+input UpdateRequestDestinationInput {
+  """destination"""
+  destination: String
+
+  """Email"""
+  email: String
+  id: Int!
+
+  """mobileNumber"""
+  mobileNumber: String
+
+  """Name"""
+  name: String
+}
+
 input UpdateSubscriptionEmailInput {
   """Example field (placeholder)"""
   email: String
@@ -92,6 +139,8 @@ input UpdateUserInput {
 }
 
 type User {
+  active: Boolean
+
   """Identifies the date and time when the object was created."""
   createdAt: DateTime!
   email: String!
