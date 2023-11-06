@@ -56,7 +56,7 @@ export class AuthService {
     if (!user) {
       throw new NotFoundException(`No user found for email: ${email}`);
     }
-    // console.log('--->>', user, user.active);
+
     if (user && !user.active) {
       throw new NotFoundException(
         `Your Account is Not Active . Kindly Contact  With us At +918527681811`,
