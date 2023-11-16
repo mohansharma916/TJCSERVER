@@ -16,6 +16,17 @@ input ChangePasswordInput {
   oldPassword: String!
 }
 
+input CreateDocumentInput {
+  """Example field (placeholder)"""
+  documentTitle: String!
+
+  """Example field (placeholder)"""
+  documentUrl: String!
+
+  """Example field (placeholder)"""
+  userId: String!
+}
+
 input CreateRequestDestinationInput {
   """destination"""
   destination: String!
@@ -40,6 +51,12 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Document {
+  documentTitle: String!
+  documentUrl: String!
+  userId: String!
+}
+
 """
 A field whose value is a JSON Web Token (JWT): https://jwt.io/introduction.
 """
@@ -52,19 +69,24 @@ input LoginInput {
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
+  createDocument(data: CreateDocumentInput!): Document!
   createRequestDestination(createRequestDestinationInput: CreateRequestDestinationInput!): RequestDestination!
   createSubscriptionEmail(createSubscriptionEmailInput: CreateSubscriptionEmailInput!): SubscriptionEmail!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
+  removeDocument(id: Int!): Document!
   removeRequestDestination(id: Int!): RequestDestination!
   removeSubscriptionEmail(id: Int!): SubscriptionEmail!
   signup(data: SignupInput!): Auth!
+  updateDocument(updateDocumentInput: UpdateDocumentInput!): Document!
   updateRequestDestination(updateRequestDestinationInput: UpdateRequestDestinationInput!): RequestDestination!
   updateSubscriptionEmail(updateSubscriptionEmailInput: UpdateSubscriptionEmailInput!): SubscriptionEmail!
   updateUser(data: UpdateUserInput!): User!
 }
 
 type Query {
+  document(id: Int!): Document!
+  documents: [Document!]!
   hello(name: String!): String!
   helloWorld: String!
   me: User!
@@ -110,6 +132,18 @@ type Token {
 
   """JWT refresh token"""
   refreshToken: JWT!
+}
+
+input UpdateDocumentInput {
+  """Example field (placeholder)"""
+  documentTitle: String
+
+  """Example field (placeholder)"""
+  documentUrl: String
+  id: Int!
+
+  """Example field (placeholder)"""
+  userId: String
 }
 
 input UpdateRequestDestinationInput {
