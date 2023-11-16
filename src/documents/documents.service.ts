@@ -17,8 +17,12 @@ export class DocumentsService {
     });
   }
 
-  findAll() {
-    return `This action returns all documents`;
+  findAll(userID: string) {
+    return this.prisma.documents.findMany({
+      where: {
+        userId: userID,
+      },
+    });
   }
 
   findOne(id: number) {

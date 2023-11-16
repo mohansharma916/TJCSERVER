@@ -14,12 +14,12 @@ export class DocumentsResolver {
   }
 
   @Query(() => [Document], { name: 'documents' })
-  findAll() {
-    return this.documentsService.findAll();
+  findAll(@Args('userId', { type: () => String }) userId: string) {
+    return this.documentsService.findAll(userId);
   }
 
   @Query(() => Document, { name: 'document' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('userd', { type: () => Int }) id: number) {
     return this.documentsService.findOne(id);
   }
 
