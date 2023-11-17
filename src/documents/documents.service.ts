@@ -34,7 +34,14 @@ export class DocumentsService {
   }
 
   update(id: number, updateDocumentInput: UpdateDocumentInput) {
-    return `This action updates a #${id} document`;
+    return this.prisma.documents.update({
+      where: {
+        id,
+      },
+      data: {
+        documentUrl: updateDocumentInput.documentUrl,
+      },
+    });
   }
 
   remove(id: number) {
