@@ -23,9 +23,15 @@ export class UsersResolver {
     private prisma: PrismaService,
   ) {}
 
+  // @Query(() => User)
+  // async me(@UserEntity() user: User): Promise<User> {
+  //   return user;
+  // }
+
   @Query(() => User)
-  async me(@UserEntity() user: User): Promise<User> {
-    return user;
+  async me(@UserEntity() user: User) {
+    const _user = await this.usersService.getUser(user.id);
+    return _user;
   }
 
   @UseGuards(GqlAuthGuard)

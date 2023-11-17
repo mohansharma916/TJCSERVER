@@ -51,7 +51,7 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type Document {
+type DocumentModal {
   documentTitle: String!
   documentUrl: String!
   userId: String!
@@ -69,24 +69,24 @@ input LoginInput {
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
-  createDocument(data: CreateDocumentInput!): Document!
+  createDocument(data: CreateDocumentInput!): DocumentModal!
   createRequestDestination(createRequestDestinationInput: CreateRequestDestinationInput!): RequestDestination!
   createSubscriptionEmail(createSubscriptionEmailInput: CreateSubscriptionEmailInput!): SubscriptionEmail!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
-  removeDocument(id: Int!): Document!
+  removeDocument(id: Int!): DocumentModal!
   removeRequestDestination(id: Int!): RequestDestination!
   removeSubscriptionEmail(id: Int!): SubscriptionEmail!
   signup(data: SignupInput!): Auth!
-  updateDocument(updateDocumentInput: UpdateDocumentInput!): Document!
+  updateDocument(updateDocumentInput: UpdateDocumentInput!): DocumentModal!
   updateRequestDestination(updateRequestDestinationInput: UpdateRequestDestinationInput!): RequestDestination!
   updateSubscriptionEmail(updateSubscriptionEmailInput: UpdateSubscriptionEmailInput!): SubscriptionEmail!
   updateUser(data: UpdateUserInput!): User!
 }
 
 type Query {
-  document(id: Int!): Document!
-  documents: [Document!]!
+  document(userd: Int!): DocumentModal!
+  documents(userId: String!): [DocumentModal!]!
   hello(name: String!): String!
   helloWorld: String!
   me: User!
@@ -173,6 +173,7 @@ input UpdateUserInput {
 }
 
 type User {
+  Documents: [DocumentModal!]
   active: Boolean
 
   """Identifies the date and time when the object was created."""

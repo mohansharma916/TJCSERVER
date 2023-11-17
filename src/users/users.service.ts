@@ -20,6 +20,18 @@ export class UsersService {
     });
   }
 
+  // ***************************** Get User Details By Id    ************************
+  async getUser(userId: string) {
+    const user = await this.prisma.user.findFirst({
+      where: { id: userId },
+      include: {
+        Documents: true,
+      },
+    });
+
+    return user;
+  }
+
   async changePassword(
     userId: string,
     userPassword: string,

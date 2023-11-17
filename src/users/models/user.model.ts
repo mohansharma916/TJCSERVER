@@ -8,6 +8,8 @@ import {
 import { IsEmail } from 'class-validator';
 import { BaseModel } from '../../common/models/base.model';
 import { Role } from '@prisma/client';
+import { DocumentModal } from '../../documents/entities/document.entity';
+// import { Document } from 'src/documents/entities/document.entity';
 
 registerEnumType(Role, {
   name: 'Role',
@@ -31,6 +33,9 @@ export class User extends BaseModel {
 
   @Field(() => Role)
   role: Role;
+
+  @Field(() => [DocumentModal], { nullable: true })
+  Documents?: DocumentModal[];
 
   @HideField()
   password: string;

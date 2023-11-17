@@ -1,13 +1,13 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
-export class Document {
-  @Field()
+export class DocumentModal {
+  @Field(() => String)
   documentTitle: string;
 
-  @Field()
+  @Field(() => String)
   documentUrl: string;
 
-  @Field()
+  @Field(() => String)
   userId: string;
 }

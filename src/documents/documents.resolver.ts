@@ -1,29 +1,29 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { DocumentsService } from './documents.service';
-import { Document } from './entities/document.entity';
+import { DocumentModal } from './entities/document.entity';
 import { CreateDocumentInput } from './dto/create-document.input';
 import { UpdateDocumentInput } from './dto/update-document.input';
 
-@Resolver(() => Document)
+@Resolver(() => DocumentModal)
 export class DocumentsResolver {
   constructor(private readonly documentsService: DocumentsService) {}
 
-  @Mutation(() => Document)
+  @Mutation(() => DocumentModal)
   createDocument(@Args('data') createDocumentInput: CreateDocumentInput) {
     return this.documentsService.create(createDocumentInput);
   }
 
-  @Query(() => [Document], { name: 'documents' })
+  @Query(() => [DocumentModal], { name: 'documents' })
   findAll(@Args('userId', { type: () => String }) userId: string) {
     return this.documentsService.findAll(userId);
   }
 
-  @Query(() => Document, { name: 'document' })
+  @Query(() => DocumentModal, { name: 'document' })
   findOne(@Args('userd', { type: () => Int }) id: number) {
     return this.documentsService.findOne(id);
   }
 
-  @Mutation(() => Document)
+  @Mutation(() => DocumentModal)
   updateDocument(
     @Args('updateDocumentInput') updateDocumentInput: UpdateDocumentInput,
   ) {
@@ -33,7 +33,7 @@ export class DocumentsResolver {
     );
   }
 
-  @Mutation(() => Document)
+  @Mutation(() => DocumentModal)
   removeDocument(@Args('id', { type: () => Int }) id: number) {
     return this.documentsService.remove(id);
   }
