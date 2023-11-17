@@ -2,12 +2,12 @@ import { InputType, Int, Field } from '@nestjs/graphql';
 
 @InputType()
 export class CreateDocumentInput {
-  @Field(() => String, { description: 'Example field (placeholder)' })
+  @Field(() => String, { description: 'Document Title' })
   documentTitle: string;
 
-  @Field(() => String, { description: 'Example field (placeholder)' })
+  @Field(() => String, { description: 'Document URl' })
   documentUrl: string;
 
-  @Field(() => String, { description: 'Example field (placeholder)' })
+  @Field(() => String, { description: 'User Id' })
   userId: string;
 }

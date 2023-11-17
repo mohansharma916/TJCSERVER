@@ -17,13 +17,13 @@ input ChangePasswordInput {
 }
 
 input CreateDocumentInput {
-  """Example field (placeholder)"""
+  """Document Title"""
   documentTitle: String!
 
-  """Example field (placeholder)"""
+  """Document URl"""
   documentUrl: String!
 
-  """Example field (placeholder)"""
+  """User Id"""
   userId: String!
 }
 
@@ -54,6 +54,7 @@ scalar DateTime
 type DocumentModal {
   documentTitle: String!
   documentUrl: String!
+  id: Int!
   userId: String!
 }
 
@@ -135,14 +136,14 @@ type Token {
 }
 
 input UpdateDocumentInput {
-  """Example field (placeholder)"""
+  """Document Title"""
   documentTitle: String
 
-  """Example field (placeholder)"""
+  """Document URl"""
   documentUrl: String
   id: Int!
 
-  """Example field (placeholder)"""
+  """User Id"""
   userId: String
 }
 

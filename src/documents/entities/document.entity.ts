@@ -10,4 +10,7 @@ export class DocumentModal {
 
   @Field(() => String)
   userId: string;
+
+  @Field(() => Int)
+  id: number;
 }
