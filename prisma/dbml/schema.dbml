@@ -42,7 +42,6 @@ Table Booking {
   tripId Int [not null]
   tripDate String [not null]
   createdAt DateTime [default: `now()`, not null]
-  passengers Int
 }
 
 Table Documents {
