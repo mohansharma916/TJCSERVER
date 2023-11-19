@@ -12,8 +12,14 @@ type Auth {
 }
 
 type BookingTrip {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Trip Date"""
+  tripDate: String
+
+  """Trip Id"""
+  tripId: Int
+
+  """User Id"""
+  userId: String
 }
 
 input ChangePasswordInput {
