@@ -3,7 +3,7 @@ import { InputType, Int, Field } from '@nestjs/graphql';
 @InputType()
 export class CreateBookingTripInput {
   @Field(() => String, { description: 'Trip Date', nullable: true })
-  tripDate: string;
+  tripDate?: string;
 
   @Field(() => String, { description: 'User Id', nullable: true })
   userId?: string;
