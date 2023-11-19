@@ -40,8 +40,9 @@ Table Booking {
   userId String
   trip Trip [not null]
   tripId Int [not null]
+  tripDate String
   createdAt DateTime [default: `now()`, not null]
-  passengers Int [not null]
+  passengers Int
 }
 
 Table Documents {

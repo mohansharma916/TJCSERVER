@@ -51,8 +51,9 @@ model Booking {
   userId     String?
   trip       Trip     @relation(fields: [tripId], references: [id])
   tripId     Int
+  tripDate   String?
   createdAt  DateTime @default(now())
-  passengers Int
+  passengers Int?
 }
 
 model Documents {

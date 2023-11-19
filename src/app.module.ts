@@ -14,6 +14,7 @@ import { SubscriptionEmailModule } from './subscription-email/subscription-email
 import { RequestDestinationModule } from './request-destination/request-destination.module';
 import { ImageKitModule } from './image-kit/image-kit.module';
 import { DocumentsModule } from './documents/documents.module';
+import { BookingTripModule } from './booking-trip/booking-trip.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { DocumentsModule } from './documents/documents.module';
     RequestDestinationModule,
     ImageKitModule,
     DocumentsModule,
+    BookingTripModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
