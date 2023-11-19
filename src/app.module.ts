@@ -12,7 +12,6 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GqlConfigService } from './gql-config.service';
 import { SubscriptionEmailModule } from './subscription-email/subscription-email.module';
 import { RequestDestinationModule } from './request-destination/request-destination.module';
-import { ImageKitModule } from './image-kit/image-kit.module';
 import { DocumentsModule } from './documents/documents.module';
 import { BookingTripModule } from './booking-trip/booking-trip.module';
 
@@ -41,7 +40,6 @@ import { BookingTripModule } from './booking-trip/booking-trip.module';
     UsersModule,
     SubscriptionEmailModule,
     RequestDestinationModule,
-    ImageKitModule,
     DocumentsModule,
     BookingTripModule,
   ],

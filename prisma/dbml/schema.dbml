@@ -36,11 +36,11 @@ Table Trip {
 
 Table Booking {
   id Int [pk, increment]
-  user User
-  userId String
+  user User [not null]
+  userId String [not null]
   trip Trip [not null]
   tripId Int [not null]
-  tripDate String
+  tripDate String [not null]
   createdAt DateTime [default: `now()`, not null]
   passengers Int
 }
