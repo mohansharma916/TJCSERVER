@@ -7,13 +7,12 @@ import ImageKit from 'imagekit';
 
 @Injectable()
 export class ImageKitService {
-  private imagekit = new ImageKit({
-    urlEndpoint: 'https://ik.imagekit.io/agp8nuqpn',
-    publicKey: 'public_8anjxSMpbiBoJFTE5qveHXKt6Lg=',
-    privateKey: 'private_jmZnjGsUdwgZ6/yFKbFFRzOMpVY=',
-  });
-
-  getAuthenticationParameters() {
-    return this.imagekit.getAuthenticationParameters();
-  }
+  // private imagekit = new ImageKit({
+  //   urlEndpoint: 'https://ik.imagekit.io/agp8nuqpn',
+  //   publicKey: 'public_8anjxSMpbiBoJFTE5qveHXKt6Lg=',
+  //   privateKey: 'private_jmZnjGsUdwgZ6/yFKbFFRzOMpVY=',
+  // });
+  // getAuthenticationParameters() {
+  //   return this.imagekit.getAuthenticationParameters();
+  // }
 }
