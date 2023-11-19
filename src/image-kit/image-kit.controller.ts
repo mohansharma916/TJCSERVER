@@ -20,11 +20,11 @@ export class ImageKitController {
   //   return this.imageKitService.create(createImageKitDto);
   // }
 
-  @Get('auth')
-  async getAuthParams() {
-    const result = this.imageKitService.getAuthenticationParameters();
-    return result;
-  }
+  // @Get('auth')
+  // async getAuthParams() {
+  //   const result = this.imageKitService.getAuthenticationParameters();
+  //   return result;
+  // }
 
   // @Get()
   // findAll() {
