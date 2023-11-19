@@ -11,9 +11,25 @@ type Auth {
   user: User!
 }
 
+type BookingTrip {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 input ChangePasswordInput {
   newPassword: String!
   oldPassword: String!
+}
+
+input CreateBookingTripInput {
+  """Trip Date"""
+  tripDate: String
+
+  """Trip Id"""
+  tripId: Int
+
+  """User Id"""
+  userId: String
 }
 
 input CreateDocumentInput {
@@ -70,15 +86,18 @@ input LoginInput {
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
+  createBookingTrip(createBookingTripInput: CreateBookingTripInput!): BookingTrip!
   createDocument(data: CreateDocumentInput!): DocumentModal!
   createRequestDestination(createRequestDestinationInput: CreateRequestDestinationInput!): RequestDestination!
   createSubscriptionEmail(createSubscriptionEmailInput: CreateSubscriptionEmailInput!): SubscriptionEmail!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
+  removeBookingTrip(id: Int!): BookingTrip!
   removeDocument(id: Int!): DocumentModal!
   removeRequestDestination(id: Int!): RequestDestination!
   removeSubscriptionEmail(id: Int!): SubscriptionEmail!
   signup(data: SignupInput!): Auth!
+  updateBookingTrip(updateBookingTripInput: UpdateBookingTripInput!): BookingTrip!
   updateDocument(updateDocumentInput: UpdateDocumentInput!): DocumentModal!
   updateRequestDestination(updateRequestDestinationInput: UpdateRequestDestinationInput!): RequestDestination!
   updateSubscriptionEmail(updateSubscriptionEmailInput: UpdateSubscriptionEmailInput!): SubscriptionEmail!
@@ -86,6 +105,8 @@ type Mutation {
 }
 
 type Query {
+  bookingTrip(id: Int!): BookingTrip!
+  bookingTripsOfUser(UserId: String!): [BookingTrip!]!
   document(userd: Int!): DocumentModal!
   documents(userId: String!): [DocumentModal!]!
   hello(name: String!): String!
@@ -133,6 +154,19 @@ type Token {
 
   """JWT refresh token"""
   refreshToken: JWT!
+}
+
+input UpdateBookingTripInput {
+  id: Int!
+
+  """Trip Date"""
+  tripDate: String
+
+  """Trip Id"""
+  tripId: Int
+
+  """User Id"""
+  userId: String
 }
 
 input UpdateDocumentInput {
