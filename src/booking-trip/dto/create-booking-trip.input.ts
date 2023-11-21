@@ -10,4 +10,7 @@ export class CreateBookingTripInput {
 
   @Field(() => Int, { description: 'Trip Id', nullable: true })
   tripId: number;
+
+  @Field(() => Int, { description: 'passengers', nullable: true })
+  passengers?: number;
 }

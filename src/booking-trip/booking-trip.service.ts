@@ -13,6 +13,7 @@ export class BookingTripService {
         userId: createBookingTripInput.userId,
         tripId: createBookingTripInput.tripId,
         tripDate: createBookingTripInput.tripDate,
+        passengers: createBookingTripInput.passengers,
       },
     });
     return TripBooking;
