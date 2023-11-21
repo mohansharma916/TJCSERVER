@@ -28,6 +28,9 @@ input ChangePasswordInput {
 }
 
 input CreateBookingTripInput {
+  """passengers"""
+  passengers: Int
+
   """Trip Date"""
   tripDate: String
 
@@ -164,6 +167,9 @@ type Token {
 
 input UpdateBookingTripInput {
   id: Int!
+
+  """passengers"""
+  passengers: Int
 
   """Trip Date"""
   tripDate: String
